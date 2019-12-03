@@ -1,12 +1,15 @@
 package com.bhk.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Address {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String addressLine1;
 	private String addressLine2;
@@ -62,8 +65,7 @@ public class Address {
 		this.zip = zip;
 	}
 
-	public Address(Long id, String addressLine1, String addressLine2, String city, String state, String zip) {
-		this.id = id;
+	public Address(String addressLine1, String addressLine2, String city, String state, String zip) {		
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;
 		this.city = city;

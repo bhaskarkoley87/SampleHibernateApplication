@@ -39,11 +39,11 @@ public class StudentDAO {
 		}
 	}
 
-	@NamedQuery(name="GET_STUDENT_BY_FIRST_NAME", query="SELECT s FROM Student s WHERE s.firstName :frstName")
+	/*@NamedQuery(name="GET_STUDENT_BY_FIRST_NAME", query="SELECT s FROM Student s WHERE s.firstName :frstName")
 	public Student getStudentByFirstName(String firstName) {
 		try (Session session = hibernateUtil.getSessionFactory().openSession()) {
 			
 		}
-	}
+	}*/
 
 }
