@@ -1,9 +1,9 @@
 package com.bhk.entity;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Student {
@@ -12,7 +12,9 @@ public class Student {
 	private Long rollNo;
 	private String firstName;
 	private String lastName;
-	private List<Address> studentAddress;
+	@OneToOne
+	@JoinColumn(name="id")
+	private Address studentAddress;
 
 	public Long getRollNo() {
 		return rollNo;
@@ -38,15 +40,15 @@ public class Student {
 		this.lastName = lastName;
 	}
 
-	public List<Address> getStudentAddress() {
+	public Address getStudentAddress() {
 		return studentAddress;
 	}
 
-	public void setStudentAddress(List<Address> studentAddress) {
+	public void setStudentAddress(Address studentAddress) {
 		this.studentAddress = studentAddress;
 	}
 
-	public Student(Long rollNo, String firstName, String lastName, List<Address> studentAddress) {
+	public Student(Long rollNo, String firstName, String lastName, Address studentAddress) {
 		this.rollNo = rollNo;
 		this.firstName = firstName;
 		this.lastName = lastName;

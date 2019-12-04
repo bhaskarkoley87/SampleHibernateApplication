@@ -11,11 +11,9 @@ public class Application {
 
 	public static void main(String[] args) throws Exception{
 		Address address1 = new Address("ABC Street", "Opp. xyz", "Kolkata", "West Bengal", "123810");	
-		List<Address> addressList = new ArrayList<Address>();
-		addressList.add(address1);
-		Student student = new Student(1l, "Bhaskar", "koley", addressList);
+		Student student = new Student(1l, "Bhaskar", "koley", address1);
 		StudentDAO studentDAO = new StudentDAO();
-		studentDAO.save(student);
+		studentDAO.save(student, address1);
 
 	}
 
