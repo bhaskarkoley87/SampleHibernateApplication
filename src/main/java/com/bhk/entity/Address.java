@@ -1,29 +1,21 @@
 package com.bhk.entity;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+// Use to embed a class(custom data type) as a value type
+@Embeddable
 public class Address {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	
 	private String addressLine1;
 	private String addressLine2;
 	private String city;
 	private String state;
-	private String zip;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
+	private String zip;	
 
 	public String getAddressLine1() {
 		return addressLine1;

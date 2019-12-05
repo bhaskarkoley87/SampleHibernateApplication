@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-import com.bhk.entity.Address;
+import com.bhk.entity.Guide;
 import com.bhk.entity.Student;
 
 public class HibernateUtil {
@@ -40,10 +40,10 @@ public class HibernateUtil {
 			settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 			settings.put(Environment.SHOW_SQL, "true");
 			settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-			settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+			settings.put(Environment.HBM2DDL_AUTO, "update");
 			configuration.setProperties(settings);
 			configuration.addAnnotatedClass(Student.class);
-			configuration.addAnnotatedClass(Address.class);
+			configuration.addAnnotatedClass(Guide.class);
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();
 			sessionFactory = configuration.buildSessionFactory(serviceRegistry);

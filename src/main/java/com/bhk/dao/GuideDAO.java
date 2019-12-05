@@ -5,24 +5,24 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.bhk.entity.Address;
+import com.bhk.entity.Guide;
 import com.bhk.entity.Student;
 import com.bhk.utils.HibernateUtil;
 
-public class StudentDAO {
+public class GuideDAO {
 	private HibernateUtil hibernateUtil;
 	private Transaction transaction = null;
+	
 
-	public StudentDAO() {
+	public GuideDAO() {
 		hibernateUtil = HibernateUtil.getInstance();
 	}
 
-	public boolean save(Student student) {
+	public boolean save(Guide guide) {
 		try (Session session = hibernateUtil.getSessionFactory().getCurrentSession()) {
 			transaction = session.beginTransaction();
-			// save the student object
-			//session.saveOrUpdate(address);
-			session.save(student);
+			// save the guide object			
+			session.save(guide);
 			// commit transaction
 			transaction.commit();
 			return true;
@@ -32,17 +32,11 @@ public class StudentDAO {
 		}
 	}
 
-	public List<Student> getStudents() {
+	public List<Guide> getGuide() {
 		try (Session session = hibernateUtil.getSessionFactory().getCurrentSession()) {
-			return session.createQuery("from Student", Student.class).list();
+			return session.createQuery("from Guide", Guide.class).list();
 		}
 	}
 
-	/*@NamedQuery(name="GET_STUDENT_BY_FIRST_NAME", query="SELECT s FROM Student s WHERE s.firstName :frstName")
-	public Student getStudentByFirstName(String firstName) {
-		try (Session session = hibernateUtil.getSessionFactory().openSession()) {
-			
-		}
-	}*/
 
 }
