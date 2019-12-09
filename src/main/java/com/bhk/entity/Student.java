@@ -23,6 +23,7 @@ import javax.persistence.ManyToOne;
 
 import com.bhk.utils.StudentStatus;
 
+
 @Entity
 public class Student {
 
@@ -69,11 +70,6 @@ public class Student {
 	@JoinColumn(name = "guide_id")
 	private Guide guide;
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
-	@JoinTable(name = "student_subject", joinColumns = { @JoinColumn(name = "sudent_id") }, inverseJoinColumns = {
-			@JoinColumn(name = "subject_id") })
-	private Set<Subject> subjects = new HashSet<Subject>();
-
 	// This is use to map the ENUM to a table column
 	@Enumerated(EnumType.STRING)
 	private StudentStatus studentStatus;
@@ -82,6 +78,11 @@ public class Student {
 	@ElementCollection
 	@CollectionTable(name = "ExtracurricularActivity", joinColumns = @JoinColumn(name = "rollNo"))
 	private Collection<String> extracurricular_Activity = new ArrayList<String>();
+
+	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REMOVE })
+	@JoinTable(name = "student_subject", joinColumns = { @JoinColumn(name = "sudent_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "subject_id") })
+	private Set<Subject> subjects = new HashSet<Subject>();
 
 	public Long getRollNo() {
 		return rollNo;
@@ -173,10 +174,13 @@ public class Student {
 
 	@Override
 	public boolean equals(Object obj) {
-		if(!(obj instanceof Student)) return false;
-		Student other = (Student)obj;
-		if(this.rollNo.equals(other.rollNo) && this.firstName.equals(other.firstName)) return true;
-		else return false;			
+		if (!(obj instanceof Student))
+			return false;
+		Student other = (Student) obj;
+		if (this.rollNo.equals(other.rollNo) && this.firstName.equals(other.firstName))
+			return true;
+		else
+			return false;
 	}
 
 	@Override
