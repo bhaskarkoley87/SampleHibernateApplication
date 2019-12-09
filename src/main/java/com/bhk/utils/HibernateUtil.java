@@ -10,6 +10,7 @@ import org.hibernate.service.ServiceRegistry;
 
 import com.bhk.entity.Guide;
 import com.bhk.entity.Student;
+import com.bhk.entity.Subject;
 
 public class HibernateUtil {
 
@@ -33,17 +34,23 @@ public class HibernateUtil {
 			Configuration configuration = new Configuration();
 			// Hibernate settings equivalent to hibernate.cfg.xml's properties
 			Properties settings = new Properties();
-			settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-			settings.put(Environment.URL, "jdbc:mysql://127.0.0.1:3306/hibernate_db?useSSL=false");
-			settings.put(Environment.USER, "root");
-			settings.put(Environment.PASS, "Raven1234");
-			settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+			//settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
+			//settings.put(Environment.URL, "jdbc:mysql://127.0.0.1:3306/hibernate_db?useSSL=false");
+			//settings.put(Environment.USER, "root");
+			//settings.put(Environment.PASS, "Raven1234");
+			//settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+			settings.put(Environment.DRIVER, "org.postgresql.Driver");
+			settings.put(Environment.URL, "jdbc:postgresql://127.0.0.1:5432/hibernate_db?useSSL=false");
+			settings.put(Environment.USER, "postgres");
+			settings.put(Environment.PASS, "1234");
+			settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
 			settings.put(Environment.SHOW_SQL, "true");
 			settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 			settings.put(Environment.HBM2DDL_AUTO, "update");
 			configuration.setProperties(settings);
 			configuration.addAnnotatedClass(Student.class);
 			configuration.addAnnotatedClass(Guide.class);
+			configuration.addAnnotatedClass(Subject.class);
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();
 			sessionFactory = configuration.buildSessionFactory(serviceRegistry);
