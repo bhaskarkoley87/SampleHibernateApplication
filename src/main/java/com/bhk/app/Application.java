@@ -1,16 +1,16 @@
 package com.bhk.app;
 
-import javax.persistence.CascadeType;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import com.bhk.dao.GuideDAO;
-import com.bhk.dao.StudentDAO;
 import com.bhk.entity.Address;
 import com.bhk.entity.Guide;
 import com.bhk.entity.Student;
 import com.bhk.utils.HibernateUtil;
+import com.bhk.utils.StudentStatus;
 
 public class Application {
 
@@ -18,7 +18,11 @@ public class Application {
 		Address address1 = new Address("ABC Street", "Opp. xyz", "Kolkata", "West Bengal", "123810");
 		Address address2 = new Address("DEF Street", "Opp. abc", "Kolkata", "West Bengal", "123899");
 		Guide guide = new Guide("SF13942", "Ramesh Kumar", 100000);	
-		Student student = new Student(2l, "Bhaskar", "koley", address1, address2, guide);		
+		List<String> extracurricular_Activity = new ArrayList<String>();
+		extracurricular_Activity.add("Footbal");
+		extracurricular_Activity.add("Drawing");
+		extracurricular_Activity.add("Singing");
+		Student student = new Student(5l, "Bhaskar", "koley", address1, address2, guide, StudentStatus.ACTIVE, extracurricular_Activity);		
 		HibernateUtil hibernateUtil = HibernateUtil.getInstance();
 		Transaction transaction = null;
 		try (Session session = hibernateUtil.getSessionFactory().getCurrentSession()) {
