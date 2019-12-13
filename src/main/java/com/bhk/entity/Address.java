@@ -1,5 +1,7 @@
 package com.bhk.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +10,7 @@ import javax.persistence.Id;
 
 // Use to embed a class(custom data type) as a value type
 @Embeddable
-public class Address {
+public class Address implements Serializable {
 
 	
 	private String addressLine1;

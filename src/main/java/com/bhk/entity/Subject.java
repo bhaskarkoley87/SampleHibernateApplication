@@ -1,5 +1,6 @@
 package com.bhk.entity;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Subject {
+public class Subject implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

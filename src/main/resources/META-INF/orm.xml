@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_1.xsd">
+
+	<entity class="com.bhk.entity.Student">
+		<named-query name="findByName">
+			<query>
+				SELECT student FROM Student student WHERE student.firstName =:firstName
+			</query>
+		</named-query>
+		<named-query name="findGuideByName">
+			<query>
+				SELECT student.firstName, student.lastName, guideObject.name FROM Student student JOIN student.guide guideObject WHERE student.firstName =:firstName
+			</query>
+		</named-query>
+	</entity>	
+	<entity class="com.bhk.entity.Guide">
+	</entity>
+	<entity class="com.bhk.entity.Subject">
+	</entity>
+	<entity class="com.bhk.entity.Animal">
+	</entity>
+	<entity class="com.bhk.entity.Dog">
+	</entity>
+	<entity class="com.bhk.entity.Cat">
+	</entity>
+</entity-mappings>

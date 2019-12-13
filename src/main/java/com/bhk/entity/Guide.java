@@ -1,13 +1,17 @@
 package com.bhk.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Guide {
+@Table(name="Guide")
+public class Guide implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
